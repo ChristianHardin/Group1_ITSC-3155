@@ -29,5 +29,5 @@ Ability to generate workout routines based on data and requests.
 
 
 ## Team Members:
-Christan Hardin - Scrum Master
-Tristan Elsener - SQL God
+1. Christan Hardin - Scrum Master
+2. Tristan Elsener - SQL God
