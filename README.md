@@ -12,7 +12,7 @@ Objectives for our application are:
 Have you seen americas obeasity rate, we are the cure
 
 ## Target Audience:
-
+The target audience for our application is anyone interested in monitoring and improving their physical health, including but not limited to Fitness enthusiasts, Beginners, and those seeking to loose weight.
 
 ## Requirements:
 
