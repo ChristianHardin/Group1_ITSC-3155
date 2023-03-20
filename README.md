@@ -9,7 +9,7 @@ Objectives for our application are:
 3. Goal-setting and motivation: Allow users to set goals as well as display their progress twoards those goals as well as provide reminders and motivation
 
 ## Problem Statement:
-
+Have you seen americas obeasity rate, we are the cure
 
 ## Target Audience:
 
