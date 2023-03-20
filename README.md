@@ -7,7 +7,6 @@ Objectives for our application are:
 1. Tracking physcial activity: Allow users to log different types of activity (i.e. running, walking, cycling, swimming ect.) as well as provide tools for measuring/monitoring their progress
 2. Monitoring health metrics: Allow users to track metrics related to their health such as calories, macronutrients, hours slept and weight in order to give users a holistic view of their overall health
 3. Goal-setting and motivation: Allow users to set goals as well as display their progress twoards those goals as well as provide reminders and motivation
-4. Social Features: Allow users to connect with others who share similar goals and interests in order to provide support and encouragement.
 
 ## Problem Statement:
 
