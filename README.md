@@ -15,6 +15,11 @@ Have you seen americas obeasity rate, we are the cure
 The target audience for our application is anyone interested in monitoring and improving their physical health, including but not limited to Fitness enthusiasts, Beginners, and those seeking to loose weight.
 
 ## Requirements:
+Ability to create an account, log in and out of it. It must be able to save your data.
+
+Ability to receive records about health related fields and save them. Also must be able to calculate statistics based on input data
+
+Ability to generate workout routines based on data and requests. 
 
 
 ## Software Architecture:
