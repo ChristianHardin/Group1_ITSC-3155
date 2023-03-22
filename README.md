@@ -32,6 +32,7 @@ Generate workout routines based on data and requests. The system will be able to
 ## Technology Stack:
 Angular
 SQL
+API Integration
 
 
 ## Team Members:
