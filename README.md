@@ -9,25 +9,34 @@ Objectives for our application are:
 3. Goal-setting and motivation: Allow users to set goals as well as display their progress twoards those goals as well as provide reminders and motivation
 
 ## Problem Statement:
-Have you seen americas obeasity rate, we are the cure
+Many people are overweight and cannot find time for proper execise into their lives. By using a fitness tracker to track their execises they can quickly see how they are improving and learn what they need to do. To combat America's obesity issue we need to use technology to fit it into our busy schedules.
 
 ## Target Audience:
 The target audience for our application is anyone interested in monitoring and improving their physical health, including but not limited to Fitness enthusiasts, Beginners, and those seeking to loose weight.
 
 ## Requirements:
-Ability to create an account, log in and out of it. It must be able to save your data.
+Create an account, log in and out of it. It must be able to save your data.
 
-Ability to receive records about health related fields and save them. Also must be able to calculate statistics based on input data
+Receive records about health related fields and save them. Users will be able to create a workout and record data about it such ashow long they worked, the intesity and the kind of exercise. They will also be able to enter other importsant health statistics such as weight, age, and height.
 
-Ability to generate workout routines based on data and requests. 
+Calculate statistics based on input data. The system will store each workout in an SQL table and keep track of the user's health data. It will total up distance, time and calories burned. It will also find avergaes and use the data to detemrine in what kind of health the user is in. 
+
+Display user's health data and statistics in a clean visual way. 
+
+Generate workout routines based on data and requests. The system will be able to use the data the user 
 
 
 ## Software Architecture:
 
 
 ## Technology Stack:
+Angular
+SQL
 
 
 ## Team Members:
 1. Christan Hardin - Scrum Master
-2. Tristan Elsener - SQL God
+2. Tristan Elsener - Dev Team
+3. Robert Salmon - Project Owner
+4. Jeff Meendering - Dev Team
+5. Dylan Sperry - Dev Team
