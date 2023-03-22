@@ -27,11 +27,20 @@ Generate workout routines based on data and requests. The system will be able to
 
 
 ## Software Architecture:
+The System will require the user to log into the system first before allowing them to see the homepage. From there they can input their data and their exercise events. From the home page the user can navigate to the exercises page to view suggested workouts, as well as their logs, daily nutrition and goals. 
 
+the Exercises page shows the user's past execise routines they've entered. They can then ask for a suggested routine based on a few parameters and their data.
+
+The daily nutrition page is used to record daily caloric intake compared to their calories burned. 
+
+Data logs shows users totals in their execizes such as total burned, total miles traveled etc. 
+
+The User goals page allows users to set a week and month long goals. THis page will will track how close they are to completing the goals. 
 
 ## Technology Stack:
-Angular
-SQL
+Angular - Front end system
+SQL - database to hold all data
+API Integration
 
 
 ## Team Members:
@@ -40,3 +49,4 @@ SQL
 3. Robert Salmon - Project Owner
 4. Jeff Meendering - Dev Team
 5. Dylan Sperry - Dev Team
+
