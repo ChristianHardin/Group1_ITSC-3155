@@ -40,7 +40,7 @@ The User goals page allows users to set a week and month long goals. THis page w
 ## Technology Stack:
 Angular - Front end system
 SQL - database to hold all data
-Python - Backend language
+API Integration
 
 
 ## Team Members:
