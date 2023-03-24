@@ -23,7 +23,9 @@ Calculate statistics based on input data. The system will store each workout in 
 
 Display user's health data and statistics in a clean visual way. 
 
-Generate workout routines based on data and requests. The system will be able to use the data the user 
+Generate workout routines based on data and requests. The system will be able to use the data the user
+
+![Requirements_Photo](./images/Block_Diagram_2.png)
 
 
 ## Software Architecture:
@@ -36,6 +38,8 @@ The daily nutrition page is used to record daily caloric intake compared to thei
 Data logs shows users totals in their execizes such as total burned, total miles traveled etc. 
 
 The User goals page allows users to set a week and month long goals. THis page will will track how close they are to completing the goals. 
+
+![Architecture_Photo](./images/Block_Diagram.png)
 
 ## Technology Stack:
 Angular - Front end system
