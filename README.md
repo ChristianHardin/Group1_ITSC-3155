@@ -42,8 +42,8 @@ The User goals page allows users to set a week and month long goals. THis page w
 ![Architecture_Photo](./images/Block_Diagram.png)
 
 ## Technology Stack:
-Angular - Front end system
-SQL - database to hold all data
+Angular - Front end system  <br>
+SQL - database to hold all data  <br>
 API Integration
 
 
