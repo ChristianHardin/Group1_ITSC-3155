@@ -42,9 +42,11 @@ The User goals page allows users to set a week and month long goals. THis page w
 ![Architecture_Photo](./images/Architecture.png)
 
 ## Technology Stack:
-Angular - Front end system  <br>
-SQL - database to hold all data  <br>
-API Integration
+Angular - Front-end system framework to assist with the webpage design <br>
+HTML/CSS - Markup Language to write the front-end <br>
+Typescript - Language Angular uses. <br>
+MySQL - Used to create the databases to hold all data. <br>
+Express - Flexible web application framework to communicate between the front-end and database.
 
 
 ## Team Members:
