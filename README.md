@@ -39,7 +39,7 @@ Data logs shows users totals in their execizes such as total burned, total miles
 
 The User goals page allows users to set a week and month long goals. THis page will will track how close they are to completing the goals. 
 
-![Architecture_Photo](./images/Block_Diagram.png)
+![Architecture_Photo](./images/Architecture.png)
 
 ## Technology Stack:
 Angular - Front end system  <br>
