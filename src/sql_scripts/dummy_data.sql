@@ -18,7 +18,7 @@ VALUES
     (3, '2022-01-02', 1500, 70, 4, 22, 130.8, 5.9);
 
 
-INSERT INTO Goals
+INSERT IGNORE INTO Goals
     (userID, type, target, targetDate)
 VALUES
     (1, 'weight_loss', 140, '2022-05-01'),
