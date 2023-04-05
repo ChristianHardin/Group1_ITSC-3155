@@ -9,13 +9,13 @@ VALUES
     ON DUPLICATE KEY UPDATE username = username;
 
 INSERT IGNORE INTO HealthData
-    (userID, date, hoursSlept, calories, protien, carbohydrates, fat, weight)
+    (userID, date, calories, timeExercising, distance, age, weight, height)
 VALUES
-    (1, '2022-03-04', 8, 2500, 205, 140, 80, 200),
-    (1, '2022-01-02', 7, 1800, 80, 180, 40, 151.2),
-    (2, '2022-01-01', 6, 1500, 70, 150, 30, 130.8),
-    (2, '2022-01-04', 7, 1800, 80, 180, 40, 151.2),
-    (3, '2022-01-02', 6, 1500, 70, 150, 30, 130.8);
+    (1, '2022-03-04', 2500, 60, 5, 21, 200, 6.4),
+    (1, '2022-01-02', 1800, 80, 6, 21, 151.2, 6.4),
+    (2, '2022-01-01', 1500, 70, 3, 20, 130.8, 5.5),
+    (2, '2022-01-04', 1800, 80, 6, 20, 151.2, 5.5),
+    (3, '2022-01-02', 1500, 70, 4, 22, 130.8, 5.9);
 
 
 INSERT INTO Goals

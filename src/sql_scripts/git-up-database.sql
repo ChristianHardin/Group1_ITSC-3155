@@ -12,13 +12,13 @@ CREATE TABLE HealthData (
     healthDataID INT PRIMARY KEY AUTO_INCREMENT,
     userID INT,
     date DATE NOT NULL,
-    hoursSlept INT NOT NULL,
-    calories INT NOT NULL,
-    protien INT NOT NULL,
-    carbohydrates INT NOT NULL,
-    fat INT NOT NULL,
+    calories INT,
+    timeExercising INT,
+    distance INT,
+    age INT,
     weight DECIMAL(5,2),
-    FOREIGN KEY (userID) REFERENCES Users(userID) ON DELETE CASCADE ON UPDATE CASCADE
+    height DECIMAL(5,2),
+   FOREIGN KEY (userID) REFERENCES Users(userID) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE Goals (
