@@ -1,5 +1,21 @@
 # Group1_ITSC-3155 - Git up Fitness Tracker
 
+# Requirements
+
+## Instructions
+- Install Node
+- Run the Following Commands
+    - npm install -g @angular/cli
+    - npm install --save-dev @angular-devkit/build-angular
+    - npm install --save ng2-charts
+    - npm install --save chart.js
+
+## Extra useful Commands
+- npm uninstall @angular-devkit/build-angular 
+- Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser (FOR WINDOWS ONLY)
+
+
+
 ## Introduction:
 Git up Fitness Tracker is a tool designed to help individuals track their physical activity and health in order to achieve their various fitness goals. The purpose of such an application is to help users maintain and improve their fitness levels by providing a platform for tracking and providing information based on inputed exercise data.
 
@@ -39,12 +55,14 @@ Data logs shows users totals in their execizes such as total burned, total miles
 
 The User goals page allows users to set a week and month long goals. THis page will will track how close they are to completing the goals. 
 
-![Architecture_Photo](./images/Block_Diagram.png)
+![Architecture_Photo](./images/Architecture.png)
 
 ## Technology Stack:
-Angular - Front end system  <br>
-SQL - database to hold all data  <br>
-API Integration
+Angular - Front-end system framework to assist with the webpage design <br>
+HTML/CSS - Markup Language to write the front-end <br>
+Typescript - Language Angular uses. <br>
+MySQL - Used to create the databases to hold all data. <br>
+Express - Flexible web application framework to communicate between the front-end and database.
 
 
 ## Team Members:
