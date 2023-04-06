@@ -9,7 +9,11 @@ import { WeeklyChartComponent } from './weekly-chart/weekly-chart.component';
 import { NgProgressModule } from "ngx-progressbar";
 import { NgChartsModule } from "ng2-charts";
 import { NgCircleProgressModule } from 'ng-circle-progress';
-
+import { FormsModule } from '@angular/forms';
+import { LoginComponent } from './login/login.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatDialogModule } from "@angular/material/dialog";
+import { AppRoutingModule } from './app-routing.module';
 
 
 @NgModule({
@@ -18,10 +22,12 @@ import { NgCircleProgressModule } from 'ng-circle-progress';
     NavbarComponent,
     MainPageComponent,
     CalorieRingComponent,
-    WeeklyChartComponent
+    WeeklyChartComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
+    AppRoutingModule,
     NgProgressModule,
     NgChartsModule,
     NgCircleProgressModule.forRoot({
@@ -36,6 +42,9 @@ import { NgCircleProgressModule } from 'ng-circle-progress';
       showInnerStroke: true,
       startFromZero: false
     }),
+    FormsModule,
+    BrowserAnimationsModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]
