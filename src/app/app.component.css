@@ -30,3 +30,9 @@
 .header nav a:hover {
   color: #cce6ff;
 }
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+}

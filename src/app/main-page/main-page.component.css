@@ -4,6 +4,15 @@
   align-items: center;
 }
 
+.input-and-stats-container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 750px;
+  margin-top: 20px;
+}
+
 .input-form {
   display: flex;
   flex-direction: column;
@@ -43,4 +52,46 @@
 
 .submit-button:hover {
   background-color: #0056b3;
+}
+
+.user-input-section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex: 1;
+  padding-right: 20px;
+}
+
+.lifetime-stats-section {
+  flex: 0.8;
+  padding-left: 20px;
+}
+
+.app-lifetime-stats {
+  background-color: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 5px;
+  padding: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  font-size: 14px;
+  height: 100%;
+}
+
+.app-lifetime-stats h2 {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.app-lifetime-stats ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.app-lifetime-stats li {
+  margin-bottom: 10px;
+}
+
+.app-lifetime-stats strong {
+  font-weight: bold;
 }

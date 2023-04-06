@@ -14,6 +14,7 @@ import { LoginComponent } from './login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from "@angular/material/dialog";
 import { AppRoutingModule } from './app-routing.module';
+import { LifetimeStatsComponent } from './lifetime-stats/lifetime-stats.component';
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import { AppRoutingModule } from './app-routing.module';
     CalorieRingComponent,
     WeeklyChartComponent,
     LoginComponent,
+    LifetimeStatsComponent,
   ],
   imports: [
     BrowserModule,
