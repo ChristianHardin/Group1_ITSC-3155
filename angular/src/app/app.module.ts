@@ -14,7 +14,7 @@ import { LoginComponent } from './login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from "@angular/material/dialog";
 import { AppRoutingModule } from './app-routing.module';
-// import { LifetimeStatsComponent } from './lifetime-stats/lifetime-stats.component';
+import { LifetimeStatsComponent } from './lifetime-stats/lifetime-stats.component';
 import { HttpClientModule } from '@angular/common/http';
 
 
@@ -26,7 +26,7 @@ import { HttpClientModule } from '@angular/common/http';
     CalorieRingComponent,
     WeeklyChartComponent,
     LoginComponent,
-    // LifetimeStatsComponent,
+    LifetimeStatsComponent,
   ],
   imports: [
     BrowserModule,

@@ -100,6 +100,8 @@ Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 
 At this point in time you should open up the angular folder in a terminal of your choosing and run the following command ```ng serve```, if you see the webpage building than everything should work correctly, otherwise, troubleshoot.
 
+Amendment: The command ```npx nx run Group1_ITSC-3155:serve``` may work if ```ng serve``` does not.
+
 ## Express Setup
 After setting up Angular it is now time to setup the Express server. The Express Server is a Node.js application framework with tools that allow for the easy creation of REST APIs. To begin with the setup install the following packages:
 ```
