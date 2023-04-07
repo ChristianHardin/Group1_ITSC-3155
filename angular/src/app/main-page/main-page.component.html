@@ -1,0 +1,26 @@
+<div class="main-page">
+  <app-calorie-ring [calories]="totalCalories" [time]="totalTime" [distance]="totalDistance"></app-calorie-ring>
+  <app-weekly-chart></app-weekly-chart>
+  <div class="input-and-stats-container">
+    <div class="user-input-section">
+      <form (ngSubmit)="onSubmit()" class="input-form">
+        <div class="form-group">
+          <label for="calories">Calories:</label>
+          <input type="number" [(ngModel)]="calories" name="calories" id="calories" min="0" />
+        </div>
+        <div class="form-group">
+          <label for="time">Time (minutes):</label>
+          <input type="number" [(ngModel)]="time" name="time" id="time" min="0" />
+        </div>
+        <div class="form-group">
+          <label for="distance">Distance (miles):</label>
+          <input type="number" [(ngModel)]="distance" name="distance" id="distance" step="0.1" min="0" />
+        </div>
+        <button type="submit" class="submit-button">Submit</button>
+      </form>
+    </div>
+    <div class="lifetime-stats-section">
+      <app-lifetime-stats></app-lifetime-stats>
+    </div>
+  </div>
+</div>

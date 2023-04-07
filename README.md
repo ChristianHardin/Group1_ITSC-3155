@@ -1,21 +1,16 @@
 # Group1_ITSC-3155 - Git up Fitness Tracker
-
-# Requirements
-
-## Instructions
-- Install Node
-- Run the Following Commands
-    - npm install -g @angular/cli
-    - npm install --save-dev @angular-devkit/build-angular
-    - npm install --save ng2-charts
-    - npm install --save chart.js
-
-## Extra useful Commands
-- npm uninstall @angular-devkit/build-angular 
-- Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser (FOR WINDOWS ONLY)
-
-
-
+***
+# Table of Contents
+[1. Introduction](#introduction)\
+[2. Problem Statement](#problem-statement)\
+[3. Target Audience](#target-audience)\
+[4. Requirements](#requirements)\
+[5. Software Architecture](#software-architecture)\
+[6. Technology Stack](#technology-stack)\
+[7. MySQL Setup](#mysql-setup)\
+[8. Angular Setup](#angular-setup)\
+[9. Express Setup](#express-setup)
+***
 ## Introduction:
 Git up Fitness Tracker is a tool designed to help individuals track their physical activity and health in order to achieve their various fitness goals. The purpose of such an application is to help users maintain and improve their fitness levels by providing a platform for tracking and providing information based on inputed exercise data.
 
@@ -41,7 +36,7 @@ Display user's health data and statistics in a clean visual way.
 
 Generate workout routines based on data and requests. The system will be able to use the data the user
 
-![Requirements_Photo](./images/Block_Diagram_2.png)
+![Requirements_Photo](./angular/images/Block_Diagram_2.png)
 
 
 ## Software Architecture:
@@ -55,7 +50,7 @@ Data logs shows users totals in their execizes such as total burned, total miles
 
 The User goals page allows users to set a week and month long goals. THis page will will track how close they are to completing the goals. 
 
-![Architecture_Photo](./images/Architecture.png)
+![Architecture_Photo](./angular/images/Architecture.png)
 
 ## Technology Stack:
 Angular - Front-end system framework to assist with the webpage design <br>
@@ -71,4 +66,59 @@ Express - Flexible web application framework to communicate between the front-en
 3. Robert Salmon - Project Owner
 4. Jeff Meendering - Dev Team
 5. Dylan Sperry - Dev Team
+
+
+
+
+***
+
+# INSTRUCTIONS
+
+## MySql Setup
+To Begin, you must start with the database. In this application we are using a MySql database. Create the database using the files found in './angular/src/sql_scripts/' there you will find the schema file, and the dummy data (which you can then import). While doing this however, take some notes of the following information as they will be used later in the setup.
+
+- Host (Required localhost, other untested)
+- Port to access the database
+- User (most likely root)
+- password (root password)
+
+## Angular Setup
+Now its time to setup Angular. Depending on if you have previously installed Angular or other components, you may or may not have trouble completing this setup. If such a situation occurs you can contact me (Christan Hardin) and I will help you complete the setup. Otherwise, the setup below should work.
+
+- Install node (and npm)
+- Run the Following Commands
+```
+npm install -g @angular/cli
+npm install --save-dev @angular-devkit/build-angular
+npm install --save ng2-charts
+npm install --save chart.js
+```
+If on windows run the following command after install in powershell:
+```
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+```
+
+At this point in time you should open up the angular folder in a terminal of your choosing and run the following command ```ng serve```, if you see the webpage building than everything should work correctly, otherwise, troubleshoot.
+
+Amendment: The command ```npx nx run Group1_ITSC-3155:serve``` may work if ```ng serve``` does not.
+
+## Express Setup
+After setting up Angular it is now time to setup the Express server. The Express Server is a Node.js application framework with tools that allow for the easy creation of REST APIs. To begin with the setup install the following packages:
+```
+npm install express mysql cors
+```
+After the installation of the above packages, open the file './express/server.js'. Within this file you will see the following:
+```
+const con = mysql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: "SuperSecretPassword",
+    database:"github_db",
+    port:"32700"
+});
+```
+
+This is where you will fillout the data you saved from the [MySql Setup](#mysql-setup). This section of server.js is responsible for connecting to the database. So make sure the information here is correct.
+
+After The data has been entered is is time to test the configuration. To do so navigate to the './express/ folder in a terminal of your choosing and execute the command: ```node server.js```. This command will start the Express Server. At this point if you dont see an error then you are good to go, otherwise, troubleshoot.
 
