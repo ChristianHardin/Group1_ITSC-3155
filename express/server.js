@@ -2,14 +2,14 @@ const express = require('express')
 const mysql = require('mysql')
 const cors = require('cors')
 const app = express()
-const port = 32700 // Change As needed (DEFAULT: 3000)
+const port = 4000
 
 const con = mysql.createConnection({
     host: "localhost",
     user: "root",
-    password: "superSecretPassword",
+    password: "SuperSecretPassword",
     database:"github_db",
-    port:"32768"
+    port:"32700"
 });
 
 con.connect(function(err) {
@@ -19,8 +19,22 @@ con.connect(function(err) {
 
 app.use(cors());
 
+app.get('/', (req, res) => {
+    res.send("API Running")
+});
+
 app.get('/users', (req, res) => {
     con.query("SELECT * FROM Users", (err, rows, field)=>{
+        if(!err){
+            res.send(rows);
+        } else {
+            console.log(err);
+        }
+    });
+});
+
+app.get('/healthdata', (req, res) => {
+    con.query("SELECT * FROM HealthData", (err, rows, field)=>{
         if(!err){
             res.send(rows);
         } else {
