@@ -15,6 +15,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from "@angular/material/dialog";
 import { AppRoutingModule } from './app-routing.module';
 import { LifetimeStatsComponent } from './lifetime-stats/lifetime-stats.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -46,7 +47,8 @@ import { LifetimeStatsComponent } from './lifetime-stats/lifetime-stats.componen
     }),
     FormsModule,
     BrowserAnimationsModule,
-    MatDialogModule
+    MatDialogModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
