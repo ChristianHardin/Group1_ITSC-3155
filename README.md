@@ -10,7 +10,7 @@
 [7. MySQL Setup](#mysql-setup)\
 [8. Angular Setup](#angular-setup)\
 [9. Express Setup](#express-setup)\
-[10. Docker]()
+[10. A Better Way to Deploy: Docker](#a-better-way-to-deploy)
 ***
 ## Introduction:
 Git up Fitness Tracker is a tool designed to help individuals track their physical activity and health in order to achieve their various fitness goals. The purpose of such an application is to help users maintain and improve their fitness levels by providing a platform for tracking and providing information based on inputed exercise data.
@@ -131,42 +131,9 @@ We know that the above steps can be complicated and prone to error. Thus we have
 1. Install the docker engine: https://docs.docker.com/engine/install/
 2. (LINUX USERS): Install Docker compose https://docs.docker.com/compose/install/linux/#install-using-the-repository
 3. Run the docker compose file
-    - Navigate to docker-compose.yml in terminak
+    - Navigate to the docker folder where the necessary files are located in the terminal (./docker)
     - Run the command: ```docker compose up```
         - (optional) add the -d flag to detach it from the terminal
-    - Wait for containers to fully run (when express connects to the db).
-4. Now run the Angular server (Image not created yet)
-
-
-```docker-compose.yml 
-version: '3.1'
-
-networks:
-  backend:
-
-services:
-  mysql:
-    image: mysql
-    container_name: mysql
-    command: --default-authentication-plugin=mysql_native_password
-    networks:
-      - backend
-    restart: always
-    volumes:
-      - ./github_db.sql:/docker-entrypoint-initdb.d/github_db.sql
-    environment:
-      - MYSQL_ROOT_PASSWORD=root
-
-  express:
-    image: christianhardin/project-group-one
-    container_name: express_api
-    networks:
-      - backend
-    build: .
-    depends_on: 
-      - mysql
-    ports:
-      - 4000:4000
-    restart: always
-```
+    - Wait for containers to fully run (when express connects to the db(it will crash and restart till then)).
+4. Now run the Angular server (Image not created yet). Follow [Angular Tutorial](#angular-setup)
 
