@@ -9,7 +9,8 @@
 [6. Technology Stack](#technology-stack)\
 [7. MySQL Setup](#mysql-setup)\
 [8. Angular Setup](#angular-setup)\
-[9. Express Setup](#express-setup)
+[9. Express Setup](#express-setup)\
+[10. A Better Way to Deploy: Docker](#a-better-way-to-deploy)
 ***
 ## Introduction:
 Git up Fitness Tracker is a tool designed to help individuals track their physical activity and health in order to achieve their various fitness goals. The purpose of such an application is to help users maintain and improve their fitness levels by providing a platform for tracking and providing information based on inputed exercise data.
@@ -121,4 +122,18 @@ const con = mysql.createConnection({
 This is where you will fillout the data you saved from the [MySql Setup](#mysql-setup). This section of server.js is responsible for connecting to the database. So make sure the information here is correct.
 
 After The data has been entered is is time to test the configuration. To do so navigate to the './express/ folder in a terminal of your choosing and execute the command: ```node server.js```. This command will start the Express Server. At this point if you dont see an error then you are good to go, otherwise, troubleshoot.
+
+***
+# A Better Way to Deploy
+We know that the above steps can be complicated and prone to error. Thus we have decided that we will set up a handy docker compose file for you to use.
+
+## Steps
+1. Install the docker engine: https://docs.docker.com/engine/install/
+2. (LINUX USERS): Install Docker compose https://docs.docker.com/compose/install/linux/#install-using-the-repository
+3. Run the docker compose file
+    - Navigate to the docker folder where the necessary files are located in the terminal (./docker)
+    - Run the command: ```docker compose up```
+        - (optional) add the -d flag to detach it from the terminal
+    - Wait for containers to fully run (when express connects to the db(it will crash and restart till then)).
+4. Now run the Angular server (Image not created yet). Follow [Angular Tutorial](#angular-setup)
 
