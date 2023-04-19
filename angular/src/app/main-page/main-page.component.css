@@ -1,16 +1,42 @@
 .main-page {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 2fr 1fr;
+  grid-gap: 10px;
+  padding: 30px 20px;
+}
+
+.tracking-rings{
+  grid-row: 1;
+  grid-column: 1/span 2;
+}
+
+.premade-workouts{
+  grid-row: 1;
+  grid-column: 3;
 }
 
 .input-and-stats-container {
+  grid-row: 3;
+  grid-column: 1;
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
   width: 100%;
   max-width: 750px;
   margin-top: 20px;
+}
+
+.lifetime-stats-section {
+  grid-row: 3;
+  grid-column:2;
+  flex: 0.8;
+  padding-left: 20px;
+}
+
+.weekly-chart{
+  grid-row: 4;
+  grid-column: 1;
 }
 
 .input-form {
@@ -62,10 +88,7 @@
   padding-right: 20px;
 }
 
-.lifetime-stats-section {
-  flex: 0.8;
-  padding-left: 20px;
-}
+
 
 .app-lifetime-stats {
   background-color: #f8f9fa;
