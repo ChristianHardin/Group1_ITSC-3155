@@ -17,6 +17,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { LifetimeStatsComponent } from './lifetime-stats/lifetime-stats.component';
 import { HttpClientModule } from '@angular/common/http';
 import { PremadeWorkoutComponent } from './workouts/premade-workouts.component';
+import { HeightAgeWeightComponent } from './height-age-weight/height-age-weight.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { PremadeWorkoutComponent } from './workouts/premade-workouts.component';
     WeeklyChartComponent,
     LoginComponent,
     LifetimeStatsComponent,
-    PremadeWorkoutComponent
+    PremadeWorkoutComponent,
+    HeightAgeWeightComponent
   ],
   imports: [
     BrowserModule,
