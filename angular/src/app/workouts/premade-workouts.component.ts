@@ -6,5 +6,38 @@ import { Component } from '@angular/core';
     styleUrls: ['./premade-workouts.component.css']
 })
 export class PremadeWorkoutComponent {
-    title = "Premade Workouts:"
+    title = "Premade Workouts:";
+    calories = 0;
+    time =0;
+    distance = 0;
+
+    processWorkout(workoutType:string){
+        switch(workoutType){
+            case "5-mile-run":{
+                this.calories = 740;
+                this.time = 50;
+                this.distance = 5;
+                break;
+            }
+            case "swimming":{
+                this.calories = 383;
+                this.time = 45;
+                this.distance = 4;
+                break;
+            }
+            case "weight-lifting":{
+                this.calories = 650;
+                this.time = 60;
+                this.distance = 0;
+                break;
+            }
+            case "yoga":{
+                this.calories = 460;
+                this.time = 90;
+                this.distance = 0;
+                break;
+            }
+        }
+        alert(this.calories);
+    }
 }
