@@ -40,5 +40,6 @@ export class PremadeWorkoutComponent{
                 break;
             }
         }
+        alert("You have recorded a workout with the following statistics: \n\ncalories: "+this.calories+"\ntime: "+this.time+"\ndistance: "+this.distance);
     }
 }
