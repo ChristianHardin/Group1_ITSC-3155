@@ -1,6 +1,7 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
+import { catchError, retry } from 'rxjs/operators';
 import { HealthData } from 'src/models/health-data.model';
 import { User } from 'src/models/user.model';
 
@@ -20,4 +21,16 @@ export class DataServiceService {
   getHealthData(): Observable<HealthData[]> {
     return this.http.get<HealthData[]>(url + 'healthdata')
   }
+
+  getUserHealthData(user : JSON): Observable<HealthData[]> {
+    return this.http.get<HealthData[]>(url + 'userhealthdata', {
+      params: new HttpParams().set("user", JSON.stringify(user))
+    });
+    
+  }
+
+  login(user : JSON): Observable<Object> {
+    return this.http.post(url + 'login', user);
+  }
+
 }
