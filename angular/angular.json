@@ -9,5 +9,8 @@
             "projectType": "application",
             "prefix": "app"
         }
+    },
+    "cli": {
+      "analytics": false
     }
 }

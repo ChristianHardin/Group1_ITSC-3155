@@ -29,10 +29,14 @@ export class HeightAgeWeightComponent implements OnInit{
 
     getDataFromAPI(){
       this.apiService.getUserHealthData(<JSON>this.user).subscribe((response) =>{
-        for (let i = 0; i < response.length; i++) {     
-          this.height = '' + response[i].height;
-          this.weight = '' + response[i].weight;
-          this.age = '' + response[i].age;
+        for (let i = 0; i < response.length; i++) {
+          console.log(typeof response[i].height);
+          
+          if (typeof response[i].height === "number") {
+            this.height = '' + response[i].height;
+            this.weight = '' + response[i].weight;
+            this.age = '' + response[i].age;
+          }
         }}, (error) => {
         console.log('Error: ', error)
       });

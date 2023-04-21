@@ -28,6 +28,9 @@ export class LifetimeStatsComponent implements OnInit {
 
   getDataFromAPI(){
     this.apiService.getUserHealthData(<JSON>this.user).subscribe((response) =>{
+      this.caloriesBurned = 0;
+      this.timeExercising = 0;
+      this.distance = 0;
       for (let i = 0; i < response.length; i++) {     
         this.caloriesBurned += <number>response[i].calories;
         this.timeExercising += <number>response[i].timeExercising;

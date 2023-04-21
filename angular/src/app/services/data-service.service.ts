@@ -33,4 +33,8 @@ export class DataServiceService {
     return this.http.post(url + 'login', user);
   }
 
+  addUserData(data : JSON): Observable<Object> {
+    return this.http.post(url + 'statusupdate', data);
+  }
+
 }

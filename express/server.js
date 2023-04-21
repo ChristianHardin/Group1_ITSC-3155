@@ -12,7 +12,7 @@ const con = mysql.createConnection({
     user: "root",
     password: "SuperSecretPassword",
     database:"github_db",
-    port:"32700"
+    port:"4005"
 });
 
 con.connect(function(err) {
@@ -54,7 +54,6 @@ app.get('/userhealthdata', (req, res) => {
         con.query("SELECT * FROM HealthData WHERE userID = '" + jobj[0].userID +  "'", (err, rows, field)=>{
             if(!err){
                 res.send(rows);
-                console.log(rows);
             } else {
                 // console.log(err);
             }
@@ -78,6 +77,8 @@ app.get('/healthdata', (req, res) => {
 app.get('/goals', (req, res) => {
     con.query("SELECT * FROM Goals", (err, rows, field)=>{
         if(!err){
+            res.send(rows);
+        } else {
             console.log(err);
         }
     });
@@ -93,6 +94,17 @@ app.post('/login', (req, res) => {
             } else {
                 res.status(200).send(rows)
             }
+        } else {
+            console.log(err)
+        }
+    });
+});
+
+app.post('/statusupdate', (req, res) => {
+    const data = req.body;
+    con.query("INSERT INTO HealthData (userID, date, calories, timeExercising, distance) VALUES ("+ data.userID +", "+ data.date +", "+ data.calories +", "+ data.timeExercising +", "+ data.distance +");", (err, rows, field)=>{
+        if(!err){
+            res.send(rows);
         } else {
             console.log(err)
         }

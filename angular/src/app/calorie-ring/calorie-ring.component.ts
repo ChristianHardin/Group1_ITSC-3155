@@ -13,7 +13,6 @@ export class CalorieRingComponent implements OnInit{
   @Input() time: number = 0;
   @Input() distance: number = 0;
   user:User = {};
-  temp:string = '';
 
   constructor(
     private apiService : DataServiceService,
@@ -23,7 +22,6 @@ export class CalorieRingComponent implements OnInit{
   ngOnInit(): void {
     this.userService.currentMessage.subscribe(user => {
       this.user = JSON.parse(user);
-      this.temp = user
       this.getDataFromAPI();
     });
   }
