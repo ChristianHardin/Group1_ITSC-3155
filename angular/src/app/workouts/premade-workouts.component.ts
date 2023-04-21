@@ -1,16 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 
 @Component({
     selector: 'premade-workout',
     templateUrl: './premade-workouts.component.html',
     styleUrls: ['./premade-workouts.component.css']
 })
-export class PremadeWorkoutComponent {
+export class PremadeWorkoutComponent{
     title = "Premade Workouts:";
     calories = 0;
     time =0;
     distance = 0;
-
+    @Output() calorieRingData = new EventEmitter<{calories: number, time: number, distance: number}>();
+    
     processWorkout(workoutType:string){
         switch(workoutType){
             case "5-mile-run":{
