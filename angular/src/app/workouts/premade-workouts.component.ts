@@ -38,6 +38,5 @@ export class PremadeWorkoutComponent {
                 break;
             }
         }
-        alert(this.calories);
     }
 }
