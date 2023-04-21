@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Dialog } from '@angular/cdk/dialog';
+import { Component, Inject, OnInit } from '@angular/core';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { User } from 'src/models/user.model';
+import { DataServiceService } from '../services/data-service.service';
+import { UserDataService } from '../services/user-data.service';
 
 @Component({
   selector: 'app-login',
@@ -6,16 +11,35 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  email: string = '';
+  username: string = '';
   password: string = '';
+  status: string = '';
 
-  constructor() { }
+  constructor(
+    private apiService:  DataServiceService,
+    private userService: UserDataService,
+    private dialogRef: MatDialogRef<LoginComponent>
+    ){}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   onSubmit() {
-    // Handle login logic here
-    console.log(`Email: ${this.email}, Password: ${this.password}`);
+    const user:any = 
+      {
+        username: this.username,
+        password: this.password
+      };    
+    this.apiService.login(<JSON>user).subscribe((response) => {
+      if (JSON.stringify(response) == '{"404":"404"}') {
+        this.status = 'User not found.'
+      } else {
+        this.changeUser(response);
+        this.dialogRef.close();
+      }
+    });
+  }
+
+  changeUser(user: User) {
+    this.userService.changeUser(user);
   }
 }
