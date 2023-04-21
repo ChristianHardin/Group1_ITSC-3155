@@ -5,6 +5,7 @@ import { Component, Output, EventEmitter } from '@angular/core';
     templateUrl: './premade-workouts.component.html',
     styleUrls: ['./premade-workouts.component.css']
 })
+
 export class PremadeWorkoutComponent{
     title = "Premade Workouts:";
     calories = 0;
