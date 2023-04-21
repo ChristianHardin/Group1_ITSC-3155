@@ -28,6 +28,9 @@ export class CalorieRingComponent implements OnInit{
 
   getDataFromAPI(){
     this.apiService.getUserHealthData(<JSON>this.user).subscribe((response) =>{
+      this.calories = 0;
+      this.time = 0;
+      this.distance = 0;
       for (let i = 0; i < response.length; i++) {     
         this.calories += <number>response[i].calories;
         this.time += <number>response[i].timeExercising;

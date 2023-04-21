@@ -12,7 +12,7 @@ const con = mysql.createConnection({
     user: "root",
     password: "SuperSecretPassword",
     database:"github_db",
-    port:"4005"
+    port:"32700"
 });
 
 con.connect(function(err) {
