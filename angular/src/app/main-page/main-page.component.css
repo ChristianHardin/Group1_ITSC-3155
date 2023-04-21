@@ -39,6 +39,11 @@
   grid-column: 1;
 }
 
+.biometrics{
+  grid-row: 3;
+  grid-column: 3;
+}
+
 .input-form {
   display: flex;
   flex-direction: column;
