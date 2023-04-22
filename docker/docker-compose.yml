@@ -5,19 +5,15 @@ networks:
 
 services:
   mysql:
-    image: mysql
+    image: christianhardin/deliverable2-sql
     container_name: mysql
     command: --default-authentication-plugin=mysql_native_password
     networks:
       - backend
     restart: always
-    volumes:
-      - ./github_db.sql:/docker-entrypoint-initdb.d/github_db.sql
-    environment:
-      - MYSQL_ROOT_PASSWORD=root
 
   express:
-    image: christianhardin/project-group-one
+    image: christianhardin/deliverable2-node
     container_name: express_api
     networks:
       - backend
