@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { DataServiceService } from '../data-service.service';
+import { User } from 'src/models/user.model';
+import { DataServiceService } from '../services/data-service.service';
+import { UserDataService } from '../services/user-data.service';
 
 @Component({
   selector: 'app-calorie-ring',
@@ -10,21 +12,31 @@ export class CalorieRingComponent implements OnInit{
   @Input() calories: number = 0;
   @Input() time: number = 0;
   @Input() distance: number = 0;
-  temp:Object = new Object;
+  user:User = {};
 
-  constructor(private service : DataServiceService) {}
+  constructor(
+    private apiService : DataServiceService,
+    private userService : UserDataService
+    ) {}
 
   ngOnInit(): void {
-    this.getDataFromAPI();
+    this.userService.currentMessage.subscribe(user => {
+      this.user = JSON.parse(user);
+      this.getDataFromAPI();
+    });
   }
 
   getDataFromAPI(){
-    this.service.getHealthData().subscribe((response) =>{
-      console.log('Data Recieved: ' + response)
-      console.log(response[0])
-      this.calories = <number>response[0].calories;
-      this.time = <number>response[0].timeExercising;
-      this.distance = <number>response[0].distance;
+    this.apiService.getUserHealthData(<JSON>this.user).subscribe((response) =>{
+      this.calories = 0;
+      this.time = 0;
+      this.distance = 0;
+      for (let i = 0; i < response.length; i++) {     
+        this.calories += <number>response[i].calories;
+        this.time += <number>response[i].timeExercising;
+        this.distance += <number>response[i].distance;
+      }
+      
     }, (error) => {
       console.log('Error: ', error)
     });

@@ -1,6 +1,13 @@
+<div class="nav">
+    <app-navbar></app-navbar>
+</div>
 <div class="main-page">
-  <app-calorie-ring [calories]="totalCalories" [time]="totalTime" [distance]="totalDistance"></app-calorie-ring>
-  <app-weekly-chart></app-weekly-chart>
+  <div class="tracking-rings">
+    <app-calorie-ring [calories]="totalCalories" [time]="totalTime" [distance]="totalDistance"></app-calorie-ring>
+  </div>
+  <div class="weekly-chart">
+    <app-weekly-chart></app-weekly-chart>
+  </div>
   <div class="input-and-stats-container">
     <div class="user-input-section">
       <form (ngSubmit)="onSubmit()" class="input-form">
@@ -19,8 +26,14 @@
         <button type="submit" class="submit-button">Submit</button>
       </form>
     </div>
+    </div>
     <div class="lifetime-stats-section">
       <app-lifetime-stats></app-lifetime-stats>
     </div>
-  </div>
+    <div class="premade-workouts">
+      <premade-workout></premade-workout>
+    </div>
+    <div class="biometrics">
+      <app-height-age-weight></app-height-age-weight>
+    </div>
 </div>
