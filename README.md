@@ -131,9 +131,16 @@ We know that the above steps can be complicated and prone to error. Thus we have
 1. Install the docker engine: https://docs.docker.com/engine/install/
 2. (LINUX USERS): Install Docker compose https://docs.docker.com/compose/install/linux/#install-using-the-repository
 3. Run the docker compose file
-    - Navigate to the docker folder where the necessary files are located in the terminal (./docker)
+    - Navigate to the docker folder where the necessary files are located in the terminal (Group1_ITSC-315/docker/)
     - Run the command: ```docker compose up```
         - (optional) add the -d flag to detach it from the terminal
-    - Wait for containers to fully run (when express connects to the db(it will crash and restart till then)).
-4. Now run the Angular server (Image not created yet). Follow [Angular Tutorial](#angular-setup)
+    - Wait for containers to fully run (when express connects to the db (it will crash and restart till then)).
+4. Navigation to the following link: http://localhost:4005/
+5. In order to use the application you must long in. Use the preloaded user profiles below to do so:
+
+| Username | Password | 
+| -------- | -------- |
+| tElsener74 | 1234 |
+| cHardin33 | 4321 |
+| notBurceWayne | 1111 |
 
