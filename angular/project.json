@@ -52,6 +52,7 @@
         }
       },
       "defaultConfiguration": "production",
+      "dependsOn": [],
       "outputs": [
         "{options.outputPath}"
       ]

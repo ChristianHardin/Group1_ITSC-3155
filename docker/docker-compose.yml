@@ -1,7 +1,7 @@
 version: '3.1'
 
 networks:
-  backend:
+  grouponedeliverable:
 
 services:
   mysql:
@@ -9,17 +9,29 @@ services:
     container_name: mysql
     command: --default-authentication-plugin=mysql_native_password
     networks:
-      - backend
+      - grouponedeliverable
     restart: always
 
   express:
     image: christianhardin/deliverable2-node
     container_name: express_api
     networks:
-      - backend
+      - grouponedeliverable
     build: .
     depends_on: 
       - mysql
     ports:
       - 4000:4000
+    restart: always
+
+  angular:
+    image: christianhardin/deliverable2-angular
+    container_name: angular
+    networks:
+      - grouponedeliverable
+    depends_on:
+      - mysql
+      - express
+    ports: 
+      - 4005:80
     restart: always
