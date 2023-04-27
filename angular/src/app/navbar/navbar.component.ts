@@ -11,7 +11,7 @@ import { UserDataService } from '../services/user-data.service';
 })
 export class NavbarComponent implements OnInit{
   userName: string = "Please log in."
-  constructor(private dialog: MatDialog, 
+  constructor(private dialog: MatDialog,
     private apiService : DataServiceService,
     private userService : UserDataService) {}
 
@@ -20,6 +20,11 @@ export class NavbarComponent implements OnInit{
     this.userService.currentMessage.subscribe(user => {
       this.userName = JSON.parse(user)[0].name;
     });
+  }
+
+  showNavbar = true;
+  toggleNavbar() {
+    this.showNavbar = !this.showNavbar;
   }
 
   openLoginDialog(): void {
