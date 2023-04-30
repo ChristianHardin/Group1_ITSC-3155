@@ -43,6 +43,21 @@
   margin: 0;
 }
 
+#LoginButton {
+background-color: #ffffff;
+  color: #007bff;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+#LoginButton:hover {
+  background-color: #CCFFFF;
+}
+
 @media (max-width: 768px) {
   .show-button {
     display: block;

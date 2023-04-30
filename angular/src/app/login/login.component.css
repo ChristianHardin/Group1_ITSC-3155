@@ -46,3 +46,14 @@
 .submit-button:hover {
   background-color: #0056b3;
 }
+
+a {
+  color: #007bff;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
