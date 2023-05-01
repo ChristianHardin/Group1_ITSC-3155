@@ -1,23 +1,31 @@
-<!-- calorie Ring -->
-<circle-progress
-  [percent]="caloriesPercentage"
-  [title]="'Calories: ' + calories.toFixed(0)"
-  [outerStrokeColor]="'#78C000'"
-  [innerStrokeColor]="'#C7E596'"
-></circle-progress>
+<div class="test">
+  <div class="rings">
+    <!-- calorie Ring -->
+    <circle-progress
+    [percent]="caloriesPercentage"
+    [title]="'Calories: ' + calories.toFixed(0)"
+    [outerStrokeColor]="'#78C000'"
+    [innerStrokeColor]="'#C7E596'"
+    ></circle-progress>
+    <!-- time Exercised Ring -->
+    <circle-progress
+    [percent]="timePercentage"
+    [title]="'Time: ' + time.toFixed(0)"
+    [outerStrokeColor]="'#FF0000'"
+    [innerStrokeColor]="'#FFA5A5'"
+    ></circle-progress>
 
-<!-- time Exercised Ring -->
-<circle-progress
-  [percent]="timePercentage"
-  [title]="'Time: ' + time.toFixed(0) + ' min'"
-  [outerStrokeColor]="'#FF0000'"
-  [innerStrokeColor]="'#FFA5A5'"
-></circle-progress>
-
-<!-- distance Ring -->
-<circle-progress
-  [percent]="distancePercentage"
-  [title]="'Distance: ' + distance.toFixed(1) + ' miles'"
-  [outerStrokeColor]="'#0000FF'"
-  [innerStrokeColor]="'#A5A5FF'"
-></circle-progress>
+    <!-- distance Ring -->
+    <circle-progress
+    [percent]="distancePercentage"
+    [title]="'Distance: ' + distance.toFixed(0)"
+    [outerStrokeColor]="'#0000FF'"
+    [innerStrokeColor]="'#A5A5FF'"
+    ></circle-progress>
+  </div>
+  <div class="currentTextDisplay">
+    <p>Calories: {{ caloriesStatic }} / {{ calNeeded }}</p>
+    <p>Time: {{ timeStatic }} / {{ timeNeeded }}</p>
+    <p>Distance: {{ distanceStatic }} / {{ distNeeded }}</p>
+  </div>
+</div>

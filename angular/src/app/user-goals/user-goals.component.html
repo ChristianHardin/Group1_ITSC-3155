@@ -1,0 +1,12 @@
+<div class = 'goals'>
+    <form (ngSubmit)="onSubmit()" class="input-form">
+        <h2>Create a Goal</h2>
+        <label for="calories">Calories to Burn:</label>
+        <input type="text" [(ngModel)]="calories" id="calories" name="calories" placeholder="Enter Calories">
+        <label for="time">Time (minutes):</label>
+        <input type="text" [(ngModel)]="time" id="time" name="time" placeholder="Enter Time">
+        <label for="distance">Distance (miles):</label>
+        <input type="text" [(ngModel)]="distance" id="distance" name="distance" placeholder="Enter Distance">
+        <button type="submit" class="submit-button">Submit</button>
+    </form>
+</div>

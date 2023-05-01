@@ -5,3 +5,11 @@
   <h2>Welcome, {{ userName }}</h2>
   <button mat-button (click)="openLoginDialog()">Login</button>
 </nav>
+<button class="show-button" (click)="toggleNavbar()">Menu</button>
+<nav class="navbar" [ngClass]="{'hide-navbar': !showNavbar}">
+  <div class="navbar-content">
+    <h1 class="navbar-title">Git Fit</h1>
+    <h2>Welcome, {{ userName }}</h2>
+    <button id="LoginButton" mat-button (click)="openLoginDialog()">Login</button>
+  </div>
+</nav>

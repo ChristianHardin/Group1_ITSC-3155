@@ -2,14 +2,17 @@
     <app-navbar></app-navbar>
 </div>
 <div class="main-page">
-  <div class="tracking-rings">
+  <div class="tracking-rings grid-item">
     <app-calorie-ring [calories]="totalCalories" [time]="totalTime" [distance]="totalDistance"></app-calorie-ring>
   </div>
-  <div class="weekly-chart">
+  <div class="weekly-chart grid-item">
     <app-weekly-chart></app-weekly-chart>
   </div>
-  <div class="input-and-stats-container">
+  <div class="input-and-stats-container grid-item">
     <div class="user-input-section">
+      <div class="input-header">
+        <h2>Workout Input</h2>
+      </div>
       <form (ngSubmit)="onSubmit()" class="input-form">
         <div class="form-group">
           <label for="calories">Calories:</label>
@@ -27,13 +30,16 @@
       </form>
     </div>
     </div>
-    <div class="lifetime-stats-section">
-      <app-lifetime-stats></app-lifetime-stats>
+    <div class="biometrics">
+      <app-height-age-weight></app-height-age-weight>
     </div>
     <div class="premade-workouts">
       <premade-workout></premade-workout>
     </div>
-    <div class="biometrics">
-      <app-height-age-weight></app-height-age-weight>
+    <div class="lifetime-stats-section">
+      <app-lifetime-stats></app-lifetime-stats>
+    </div>
+    <div class ="goals">
+      <app-user-goals></app-user-goals>
     </div>
 </div>

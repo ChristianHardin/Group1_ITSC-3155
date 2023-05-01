@@ -13,6 +13,7 @@ export class LifetimeStatsComponent implements OnInit {
   timeExercising: number = 0;
   distance: number = 0;
   user:User = {};
+  data:any = '';
 
   constructor(
     private apiService : DataServiceService,
@@ -22,22 +23,17 @@ export class LifetimeStatsComponent implements OnInit {
   ngOnInit(): void {
     this.userService.currentMessage.subscribe(user => {
       this.user = JSON.parse(user);
-      this.getDataFromAPI();
+      this.data = user;
+      this.lifetimeStats();
     });
   }
 
-  getDataFromAPI(){
-    this.apiService.getUserHealthData(<JSON>this.user).subscribe((response) =>{
-      this.caloriesBurned = 0;
-      this.timeExercising = 0;
-      this.distance = 0;
-      for (let i = 0; i < response.length; i++) {     
-        this.caloriesBurned += <number>response[i].calories;
-        this.timeExercising += <number>response[i].timeExercising;
-        this.distance += <number>response[i].distance;
-      }}, (error) => {
-      console.log('Error: ', error)
+  lifetimeStats() {
+    this.apiService.getUserHealthData(JSON.parse(this.data)).subscribe((response) => {
+      let obj = JSON.parse(JSON.stringify(response));
+      this.caloriesBurned = obj[0].calories;
+      this.distance = obj[0].distance;
+      this.timeExercising = obj[0].timeExercising;
     });
   }
-
 }

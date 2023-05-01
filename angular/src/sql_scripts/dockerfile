@@ -1,0 +1,13 @@
+FROM mysql:latest
+RUN chown -R mysql:root /var/lib/mysql/
+
+ENV MYSQL_DATABASE="github_db"
+ENV MYSQL_PASSWORD="root"
+ENV MYSQL_ROOT_PASSWORD="root"
+
+ADD ./github_db.sql /etc/mysql/data.sql
+
+RUN sed -i 's/MYSQL_DATABASE/'$MYSQL_DATABASE'/g' /etc/mysql/data.sql
+RUN cp /etc/mysql/data.sql /docker-entrypoint-initdb.d
+
+EXPOSE 3306
