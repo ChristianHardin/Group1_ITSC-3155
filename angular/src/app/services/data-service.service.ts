@@ -33,8 +33,20 @@ export class DataServiceService {
     return this.http.post(url + 'login', user);
   }
 
+  register(user : JSON): Observable<Object> {
+    return this.http.post(url + 'register', user);
+  }
+
+  healthDataInsert(user : JSON): Observable<Object> {
+    return this.http.post(url + 'healthdatainsert', user);
+  }
+
   addUserData(data : JSON): Observable<Object> {
     return this.http.post(url + 'statusupdate', data);
+  }
+
+  updateBiometrics(data : JSON): Observable<Object> {
+    return this.http.post(url + 'biometricupdate', data);
   }
 
 }

@@ -2,6 +2,9 @@ import { Dialog } from '@angular/cdk/dialog';
 import { Component, OnInit } from '@angular/core';
 import {MatDialog, MatDialogRef} from '@angular/material/dialog';
 import { LoginComponent } from '../login/login.component';
+import { DataServiceService } from '../services/data-service.service';
+import { UserDataService } from '../services/user-data.service';
+import { User } from 'src/models/user.model';
 
 @Component({
   selector: 'app-register',
@@ -9,6 +12,7 @@ import { LoginComponent } from '../login/login.component';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+  name: string = '';
   username: string = '';
   email: string = '';
   password: string = '';
@@ -17,10 +21,14 @@ export class RegisterComponent implements OnInit {
   age: number = 0;
   status: string = '';
 
-  registeredUsers: any[] = [];
+  mUser:User = {};
 
-  constructor(private dialogRef: MatDialogRef<LoginComponent>,
-  private dialog: MatDialog) {}
+  constructor(
+    private apiService:  DataServiceService,
+    private userService: UserDataService,
+    private dialogRef: MatDialogRef<LoginComponent>,
+    private dialog: MatDialog
+  ) {}
 
   ngOnInit(): void {}
 
@@ -30,7 +38,8 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit() {
-    const newUser = {
+    const newUser:any = {
+      name: this.name,
       username: this.username,
       email: this.email,
       password: this.password,
@@ -39,19 +48,61 @@ export class RegisterComponent implements OnInit {
       age: this.age
     };
 
-    this.registeredUsers.push(newUser);
+    this.apiService.register(<JSON>newUser).subscribe((response) => {
+      if (JSON.stringify(response) == '{"404":"404"}') {
+        this.status = 'Registration Failed'
+      } else {
+        const user:any =
+        {
+          username: this.username,
+          password: this.password
+        };
 
-    this.status = 'Registration successful!';
+        this.login(user);
+        
 
-    this.username = '';
-    this.email = '';
-    this.password = '';
-    this.height = 0;
-    this.weight = 0;
-    this.age = 0;
+        this.status = 'Registration successful!';
+        
+        setTimeout(() => {
+          this.username = '';
+          this.email = '';
+          this.password = '';
+          this.height = 0;
+          this.weight = 0;
+          this.age = 0;
+          this.userService.changeUser(this.mUser);
+          this.dialogRef.close();
+        }, 1500);        
+      }
+    });
+  }
 
-    setTimeout(() => {
-      this.dialogRef.close();
-    }, 1500);
+  login(user: User) {
+    this.apiService.login(<JSON>user).subscribe((response) => {
+      if (JSON.stringify(response) == '{"404":"404"}') {
+        this.status = 'User not found.'
+      } else {
+        this.changeUser(response);
+        this.mUser = response;
+        let stringr = JSON.stringify(response)
+        let userID = JSON.parse(stringr)[0].userID;
+
+        const user:any = {
+          userID: userID,
+          date: "'2022-03-04'",
+          calories: 0,
+          timeExercising: 0,
+          distance: 0,
+          age: this.age,
+          weight: this.weight,
+          height: this.height
+        }
+        this.apiService.healthDataInsert(<JSON>user).subscribe((response) => {});
+      }
+    });
+  }
+
+  changeUser(user: User) {
+    this.userService.changeUser(user);
   }
 }

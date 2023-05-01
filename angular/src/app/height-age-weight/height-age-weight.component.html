@@ -1,12 +1,12 @@
 <div class = 'biometrics'>
-    <form action="">
+    <form (ngSubmit)="onSubmit()">
         <h2>Biometrics</h2>
         <label for="height">Height:</label>
-        <input type="text" id="height" name="height" placeholder="{{ height }}">
+        <input type="number" [(ngModel)]="height" id="height" name="height" placeholder="{{ height }}">
         <label for="weight">Weight:</label>
-        <input type="text" id="weight" name="weight" placeholder="{{ weight }}">
+        <input type="number" [(ngModel)]="weight" id="weight" name="weight" placeholder="{{ weight }}">
         <label for="age">Age:</label>
-        <input type="text" id="age" name="age" placeholder="{{ age }}">
-        <input class="hidden updateBtn" type="submit" value="Update">
+        <input type="number" [(ngModel)]="age" id="age" name="age" placeholder="{{ age }}">
+        <button type="submit" class="submit-button">Update</button>
     </form>
 </div>

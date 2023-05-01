@@ -49,17 +49,16 @@ app.get('/usersFullData', (req, res) => {
 
 app.get('/userhealthdata', (req, res) => {
     let jobj = JSON.parse(req.query.user);
-    console.log(jobj)
     try {
         con.query("SELECT * FROM HealthData WHERE userID = '" + jobj[0].userID +  "'", (err, rows, field)=>{
             if(!err){
                 res.send(rows);
             } else {
-                // console.log(err);
+                console.log(err);
             }
         });
     } catch (err) {
-        // console.log(err)
+        console.log(err)
     }
 });
 
@@ -100,6 +99,36 @@ app.post('/login', (req, res) => {
     });
 });
 
+app.post('/register', (req, res) => {
+    const user = req.body;
+    con.query("INSERT INTO Users (name, username, password) VALUES ('"+ user.name + "','"+ user.username +"','"+ user.password +"');", (err, rows, field)=>{
+        if(!err){
+            if (rows.length == 0) {
+                res.status(200).send({404: "404"})
+            } else {
+                res.status(200).send(rows)
+            }
+        } else {
+            console.log(err)
+        }
+    });
+});
+
+app.post('/healthdatainsert', (req, res) => {
+    const user = req.body;
+    con.query("INSERT INTO HealthData (userID, date, calories, timeExercising, distance, age, weight, height) VALUES ("+ user.userID + ","+ user.date +","+ user.calories +","+ user.timeExercising +","+ user.distance +","+ user.age +","+ user.weight +","+ user.height +");", (err, rows, field)=>{
+        if(!err){
+            if (rows.length == 0) {
+                res.status(200).send({404: "404"})
+            } else {
+                res.status(200).send(rows)
+            }
+        } else {
+            console.log(err)
+        }
+    });
+});
+
 app.post('/statusupdate', (req, res) => {
     const data = req.body;
     con.query("INSERT INTO HealthData (userID, date, calories, timeExercising, distance) VALUES ("+ data.userID +", "+ data.date +", "+ data.calories +", "+ data.timeExercising +", "+ data.distance +");", (err, rows, field)=>{
@@ -111,6 +140,17 @@ app.post('/statusupdate', (req, res) => {
     });
 });
 
+app.post('/biometricupdate', (req, res) => {
+    const data = req.body;
+    con.query("INSERT INTO HealthData (userID, date, age, weight, height) VALUES ("+ data.userID +","+ data.date +","+ data.age +", "+ data.weight +", "+ data.height +");", (err, rows, field)=>{
+        if(!err){
+            res.send(rows);
+        } else {
+            console.log(err)
+        }
+    });
+});
+
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
+    console.log(`Example app listening on port ${port}`)
 })

@@ -29,9 +29,7 @@ export class HeightAgeWeightComponent implements OnInit{
 
     getDataFromAPI(){
       this.apiService.getUserHealthData(<JSON>this.user).subscribe((response) =>{
-        for (let i = 0; i < response.length; i++) {
-          console.log(typeof response[i].height);
-          
+        for (let i = 0; i < response.length; i++) {    
           if (typeof response[i].height === "number") {
             this.height = '' + response[i].height;
             this.weight = '' + response[i].weight;
@@ -40,5 +38,19 @@ export class HeightAgeWeightComponent implements OnInit{
         }}, (error) => {
         console.log('Error: ', error)
       });
+    }
+
+    onSubmit() {
+      let stringfy = JSON.stringify(this.user);
+      let userID = JSON.parse(stringfy)[0].userID;
+      const data: any = {
+        userID: userID,
+        date: "'2022-03-04'",
+        height: this.height,
+        weight: this.weight,
+        age: this.age
+      }
+      this.apiService.updateBiometrics(<JSON>data).subscribe((response) => {});
+      this.userService.changeUser(this.user);
     }
 }

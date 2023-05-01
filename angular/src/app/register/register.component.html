@@ -2,6 +2,13 @@
   <h2>Register</h2>
   <form #registerForm="ngForm" (ngSubmit)="onSubmit()" class="register-form">
     <div class="form-group">
+      <label for="name">Name:</label>
+      <input type="text" [(ngModel)]="name" name="name" id="name" #nameInput="ngModel" required />
+      <div *ngIf="nameInput.invalid && nameInput.touched" class="error">
+        Name is required.
+      </div>
+    </div>
+    <div class="form-group">
       <label for="username">Username:</label>
       <input type="text" [(ngModel)]="username" name="username" id="username" #usernameInput="ngModel" required />
       <div *ngIf="usernameInput.invalid && usernameInput.touched" class="error">
