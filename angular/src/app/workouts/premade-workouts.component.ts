@@ -15,9 +15,8 @@ export class PremadeWorkoutComponent implements OnInit{
     time =0;
     distance = 0;
     user:User = {};
-    userID:number = 0;
+    data:any = '';
 
-    @Output() calorieRingData = new EventEmitter<{calories: number, time: number, distance: number}>();
     
     constructor(
         private apiService : DataServiceService,
@@ -25,10 +24,9 @@ export class PremadeWorkoutComponent implements OnInit{
 
     ngOnInit(): void {
         this.userService.currentMessage.subscribe(user => {
-            let userID = JSON.parse(user)[0].userID;     
-            this.userID = userID;
             this.user = JSON.parse(user);
-          });
+            this.data = user
+        });
     }
 
     processWorkout(workoutType:string){
@@ -59,15 +57,38 @@ export class PremadeWorkoutComponent implements OnInit{
             }
         }
         alert("You have recorded a workout with the following statistics: \n\ncalories: "+this.calories+"\ntime: "+this.time+"\ndistance: "+this.distance);
-        const data:any = {
-            userID: this.userID,
-            date: "'2022-03-04'",
-            calories: this.calories,
-            timeExercising: this.time,
-            distance: this.distance
+        this.apiService.getUserCurrentCount(JSON.parse(this.data)[0]).subscribe((response) => {   
+            let obj = JSON.parse(JSON.stringify(response));
+            let mData:any = {
+                userID: obj[0].userID,
+                calories: obj[0].calories + this.calories,
+                timeExercising: obj[0].timeExercising + this.time,
+                distance: obj[0].distance + this.distance
+            }
+            this.apiService.removeUserData(<JSON>mData).subscribe((response) => {
+                this.apiService.addUserData(<JSON>mData).subscribe((response) => {
+                    this.updateHealth(mData)
+                });
+            });
+        });
+    }
+    updateHealth(data: any) {
+        this.apiService.getUserHealthData(<JSON>this.user).subscribe((response) => {
+            let obj = JSON.parse(JSON.stringify(response));
+            const newData: any = {
+            userID: obj[0].userID,
+            calories: obj[0].calories + this.calories,
+            timeExercising: obj[0].timeExercising + this.time,
+            distance: obj[0].distance + this.distance,
+            age: obj[0].age,
+            weight: obj[0].weight,
+            height: obj[0].height
         }
-        this.apiService.addUserData(<JSON>data).subscribe((response) => {
-            this.userService.changeUser(this.user);
+        this.apiService.removeHealthData(<JSON>newData).subscribe((response) => {
+                this.apiService.healthDataInsert(<JSON>newData).subscribe((response) => {
+                this.userService.changeUser(this.user);
+            })
+        });
         });
     }
 }

@@ -14,19 +14,24 @@ export class DataServiceService {
 
   constructor(private http : HttpClient) { }
 
-  getUserData(): Observable<User[]> {
-    return this.http.get<User[]>(url + 'users')
+  getUserHealthData(data : JSON): Observable<Object> {
+    return this.http.post(url + 'userhealthdata', data);
   }
 
-  getHealthData(): Observable<HealthData[]> {
-    return this.http.get<HealthData[]>(url + 'healthdata')
+  getUserGoalData(user : JSON): Observable<Object> {
+    return this.http.post(url + 'getUserGoalData', user);
   }
 
-  getUserHealthData(user : JSON): Observable<HealthData[]> {
-    return this.http.get<HealthData[]>(url + 'userhealthdata', {
-      params: new HttpParams().set("user", JSON.stringify(user))
-    });
-    
+  removeUserGoalData(data : JSON): Observable<Object> {
+    return this.http.post(url + 'removeUserGoalData', data);
+  }
+
+  insertUserGoalData(data : JSON): Observable<Object> {
+    return this.http.post(url + 'insertUserGoalData', data);
+  }
+
+  getUserCurrentCount(user : JSON): Observable<Object> {
+    return this.http.post(url + 'currentCount', user);
   }
 
   login(user : JSON): Observable<Object> {
@@ -37,16 +42,19 @@ export class DataServiceService {
     return this.http.post(url + 'register', user);
   }
 
-  healthDataInsert(user : JSON): Observable<Object> {
-    return this.http.post(url + 'healthdatainsert', user);
+  healthDataInsert(data : JSON): Observable<Object> {
+    return this.http.post(url + 'healthdatainsert', data);
   }
 
   addUserData(data : JSON): Observable<Object> {
     return this.http.post(url + 'statusupdate', data);
   }
 
-  updateBiometrics(data : JSON): Observable<Object> {
-    return this.http.post(url + 'biometricupdate', data);
+  removeUserData(data : JSON): Observable<Object> {
+    return this.http.post(url + 'removestatus', data);
   }
 
+  removeHealthData(data : JSON): Observable<Object> {
+    return this.http.post(url + 'removehealthdata', data);
+  }
 }

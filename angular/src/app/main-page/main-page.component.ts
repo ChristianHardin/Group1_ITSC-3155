@@ -32,15 +32,49 @@ export class MainPageComponent implements OnInit{
   }
 
   onSubmit() {
-    const data:any = {
+    let data:any = {
+      userID: this.userID,
+      calories: this.calories,
+      timeExercising: this.time,
+      distance: this.distance
+  }
+
+    this.apiService.getUserCurrentCount(<JSON>data).subscribe((response) => {
+      let tempCal = JSON.parse(JSON.stringify(response))[0].calories;
+      let tempTime = JSON.parse(JSON.stringify(response))[0].timeExercising;
+      let tempDist = JSON.parse(JSON.stringify(response))[0].distance;
+
+      let mData:any = {
         userID: this.userID,
-        date: "'2022-03-04'",
-        calories: this.calories,
-        timeExercising: this.time,
-        distance: this.distance
-    }
-    this.apiService.addUserData(<JSON>data).subscribe((response) => {
-      this.userService.changeUser(this.user);
+        calories: this.calories + tempCal,
+        timeExercising: this.time + tempTime,
+        distance: this.distance + tempDist
+      }
+      this.apiService.removeUserData(<JSON>mData).subscribe((response) => {
+        this.apiService.addUserData(<JSON>mData).subscribe((response) => {
+          this.updateHealth();
+        });
+      });
+    });
+  }
+
+  updateHealth() {
+    this.apiService.getUserHealthData(<JSON>this.user).subscribe((response) => {
+      let obj = JSON.parse(JSON.stringify(response));
+      const newData: any = {
+        userID: obj[0].userID,
+        calories: obj[0].calories + this.calories,
+        timeExercising: obj[0].timeExercising + this.time,
+        distance: obj[0].distance + this.distance,
+        age: obj[0].age,
+        weight: obj[0].weight,
+        height: obj[0].height
+      }
+      this.apiService.removeHealthData(<JSON>newData).subscribe((response) => {
+        this.apiService.healthDataInsert(<JSON>newData).subscribe((response) => {
+          this.userService.changeUser(this.user);
+        })
+      });
     });
   }
 }

@@ -1,21 +1,17 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { User } from 'src/models/user.model';
+import { Goal } from 'src/models/goal.model';
 
 @Injectable({
   providedIn: 'root'
 })
-export class UserDataService {
+export class GoalDataService {
   private messageSource = new BehaviorSubject<string>('{}');
   currentMessage = this.messageSource.asObservable();
 
   constructor() { }
 
-  changeUser(user: User) {
-    this.messageSource.next(JSON.stringify(user));
-  }
-
-  refresh() {
-    this.messageSource.next(JSON.stringify(this.messageSource));
+  changeUser(goal: Goal) {
+    this.messageSource.next(JSON.stringify(goal));
   }
 }

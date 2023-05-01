@@ -14,6 +14,7 @@ export class HeightAgeWeightComponent implements OnInit{
   weight:string = 'N/A';
   age:string = 'N/A';
   user:User = {};
+  data:any = '';
 
   constructor(
     private apiService : DataServiceService,
@@ -23,34 +24,37 @@ export class HeightAgeWeightComponent implements OnInit{
     ngOnInit(): void {
       this.userService.currentMessage.subscribe(user => {
         this.user = JSON.parse(user);
-        this.getDataFromAPI();
+        this.data = user
+        this.getHealthData();
       });
     }
 
-    getDataFromAPI(){
-      this.apiService.getUserHealthData(<JSON>this.user).subscribe((response) =>{
-        for (let i = 0; i < response.length; i++) {    
-          if (typeof response[i].height === "number") {
-            this.height = '' + response[i].height;
-            this.weight = '' + response[i].weight;
-            this.age = '' + response[i].age;
-          }
-        }}, (error) => {
-        console.log('Error: ', error)
+    getHealthData() {
+      this.apiService.getUserHealthData(JSON.parse(this.data)).subscribe((response) => {
+        let obj = JSON.parse(JSON.stringify(response));
+        this.height = obj[0].height;
+        this.weight = obj[0].weight;
+        this.age = obj[0].age;
       });
     }
 
     onSubmit() {
-      let stringfy = JSON.stringify(this.user);
-      let userID = JSON.parse(stringfy)[0].userID;
-      const data: any = {
-        userID: userID,
-        date: "'2022-03-04'",
-        height: this.height,
-        weight: this.weight,
-        age: this.age
-      }
-      this.apiService.updateBiometrics(<JSON>data).subscribe((response) => {});
-      this.userService.changeUser(this.user);
+      this.apiService.getUserHealthData(JSON.parse(this.data)).subscribe((response) => {
+        let obj = JSON.parse(JSON.stringify(response));
+        const newData: any = {
+          userID: obj[0].userID,
+          calories: obj[0].calories,
+          timeExercising: obj[0].timeExercising,
+          distance: obj[0].distance,
+          age: this.age,
+          weight: this.weight,
+          height: this.height
+        }
+        this.apiService.removeHealthData(<JSON>newData).subscribe((response) => {
+          this.apiService.healthDataInsert(<JSON>newData).subscribe((response) => {
+            this.userService.changeUser(this.user);
+          })
+        });
+      });
     }
 }

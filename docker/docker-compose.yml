@@ -5,7 +5,7 @@ networks:
 
 services:
   mysql:
-    image: christianhardin/deliverable2-sql
+    image: christianhardin/deliverable3-sql
     container_name: mysql
     command: --default-authentication-plugin=mysql_native_password
     networks:
@@ -13,7 +13,7 @@ services:
     restart: always
 
   express:
-    image: christianhardin/deliverable2-node
+    image: christianhardin/deliverable3-node
     container_name: express_api
     networks:
       - grouponedeliverable
@@ -25,7 +25,7 @@ services:
     restart: always
 
   angular:
-    image: christianhardin/deliverable2-angular
+    image: christianhardin/deliverable3-angular
     container_name: angular
     networks:
       - grouponedeliverable

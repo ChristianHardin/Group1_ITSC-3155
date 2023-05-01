@@ -1,0 +1,4 @@
+FROM mysql:latest
+ENV MYSQL_ROOT_PASSWORD=root
+COPY ./github_db.sql /docker-entrypoint-initdb.d/
+EXPOSE 32700

@@ -1,0 +1,75 @@
+DROP DATABASE IF EXISTS github_db;
+CREATE DATABASE github_db;
+USE github_db;
+
+DROP TABLE IF EXISTS Users, Goals, HealthData;
+
+CREATE TABLE Users (
+    userID INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(50) NOT NULL,
+    username VARCHAR(50) NOT NULL UNIQUE,
+    password VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE HealthData (
+    healthDataID INT PRIMARY KEY AUTO_INCREMENT,
+    userID INT,
+    calories INT,
+    timeExercising INT,
+    distance INT,
+    age INT,
+    weight DECIMAL(5,2),
+    height DECIMAL(5,2),
+   FOREIGN KEY (userID) REFERENCES Users(userID) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+CREATE TABLE Goals (
+    goalID INT PRIMARY KEY AUTO_INCREMENT,
+    userID INT,
+    caloriesToBurn INT,
+    timeToExercise INT,
+    distanceToGo INT,
+    FOREIGN KEY (userID) REFERENCES Users(userID) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+CREATE TABLE currentCount (
+	countID INT PRIMARY KEY AUTO_INCREMENT,
+	userID INT,
+	calories INT,
+	timeExercising INT,
+	distance INT,
+	FOREIGN KEY (userID) REFERENCES Users(userID) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+
+INSERT INTO Users
+    (name, username, password)
+VALUES
+    ('Tristan', 'tElsener74', '1234'),
+    ('Christan', 'cHardin33', '4321'),
+    ('Batman', 'notBurceWayne', '1111')
+    ON DUPLICATE KEY UPDATE username = username;
+
+INSERT IGNORE INTO HealthData
+    (userID, calories, timeExercising, distance, age, weight, height)
+VALUES
+    (1, 1800, 80, 6, 21, 151.2, 6.4),
+    (2, 1800, 80, 6, 20, 151.2, 5.5),
+    (3, 1500, 70, 4, 22, 130.8, 5.9);
+
+
+INSERT IGNORE INTO Goals
+    (userID, caloriesToBurn, timeToExercise, distanceToGo)
+VALUES
+	(1, 5000, 20, 50),
+	(2, 1000, 76, 37),
+	(3, 8000, 82, 58);
+	
+INSERT IGNORE INTO currentCount
+    (userID, calories, timeExercising, distance)
+VALUES
+	(1, 200, 10, 30),
+	(2, 100, 50, 20),
+	(3, 10, 10, 10);
+
+

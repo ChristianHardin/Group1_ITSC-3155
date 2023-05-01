@@ -1,3 +1,19 @@
+.test {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.rings {
+  display: flex;
+}
+
+.currentTextDisplay {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  gap: 160px;
+}
 .ring-text {
   font-family: "Arial", sans-serif;
   font-size: 16px;
