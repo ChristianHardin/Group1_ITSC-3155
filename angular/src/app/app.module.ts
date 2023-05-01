@@ -19,6 +19,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { PremadeWorkoutComponent } from './workouts/premade-workouts.component';
 import { HeightAgeWeightComponent } from './height-age-weight/height-age-weight.component';
 import { RegisterComponent } from './register/register.component';
+import { UserGoalsComponent } from './user-goals/user-goals.component';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { RegisterComponent } from './register/register.component';
     LifetimeStatsComponent,
     PremadeWorkoutComponent,
     HeightAgeWeightComponent,
-    RegisterComponent
+    RegisterComponent,
+    UserGoalsComponent
   ],
   imports: [
     BrowserModule,
